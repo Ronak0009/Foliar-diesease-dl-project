@@ -1,0 +1,57 @@
+{% extends './base.html' %}
+{% load static %}
+
+{%block title%}
+Result
+{%endblock%}
+
+
+
+{% block content %}
+<div class="container-fluid" id="company-content">
+
+<div class="card">
+    <div class="card-body-1">
+        <div>
+            <h3>Results</h3>
+        {%if data %}
+        {%for i in data%}
+        <button class="btn btn-secondary" id="edit-btn"  onclick="window.open('../results/{{i.model_id}}')">{{i.name}}
+        </button> 
+        {%endfor%}
+        {%else%}
+        No Models
+        {%endif%}
+            
+        </div>
+        <div>
+            {%if new_data%}
+            <div class="result_section">
+                <table id="result_list" border="1">
+                <tr>
+                    <th>Sr.No</th>
+                    <th>Your Image</th>
+                    <th>Disease Name</th>
+                    <th>Accuracy</th>
+                </tr>
+                {%for j in new_data%}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                  {{j}}
+                    <td><img src="{{j.test_id.image.url}}" class="img-thumbnail" id="circle" alt="profile image"></td>
+          
+                   
+                    <td>{{j.result}}</td>
+                    <td>{{j.accuracy}}</td>
+              
+            
+                </tr>
+                {%endfor%}
+            </table>
+         
+            {%else%}
+            No tests
+            {%endif%}
+        </div>
+    </div>
+    {%endblock%}

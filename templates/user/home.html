@@ -1,0 +1,38 @@
+{% extends './base.html' %}
+{% load static %}
+
+{%block title%}
+Home
+{%endblock%}
+
+
+
+{% block content %}
+<div class="container-fluid" id="company-content">
+
+<div class="card">
+    <div class="card-body-1">
+        <p>
+            <button class="btn btn-secondary" id="cmplt-btn"  onclick="window.open('../upload-model')">Upload Model
+        </button>
+     
+        <button class="btn btn-secondary" id="edit-btn"  onclick="window.open('../results')">Results
+        </button>
+    </p>
+    
+    </div>
+    <div>
+        <h3>Models</h3>
+        {%if data %}
+        {%for i in data%}
+        <button class="btn btn-secondary" id="edit-btn"  onclick="window.open('../test/{{i.model_id}}')">{{i.name}}
+        </button> 
+        {%endfor%}
+        {%else%}
+        No Models
+        {%endif%}
+    </div>
+    <!-- <div id="company-name">{{ cm_name.0.company_name }}</div> -->
+</div>
+</div>
+{%endblock%}
